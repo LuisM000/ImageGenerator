@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageGenerator.Core.Model;
+using Newtonsoft.Json;
 
 namespace ImageGenerator.Core.Utils
 {
@@ -113,6 +114,16 @@ namespace ImageGenerator.Core.Utils
 
             };
             
+        }
+
+        public static ImageOutputProperties CreateFromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<ImageOutputProperties>(json);
+        }
+
+        public static IList<ImageOutputProperties> CreateListFromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<IList<ImageOutputProperties>>(json);
         }
     }
 }

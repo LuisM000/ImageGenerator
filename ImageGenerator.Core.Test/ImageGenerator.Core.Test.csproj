@@ -69,6 +69,7 @@
     <Compile Include="FolderPathShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FolderGeneratorShould.cs" />
+    <Compile Include="ImageOutputPropertiesFactoryShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -19,6 +19,7 @@ using ImageGenerator.Core.Model;
 using ImageGenerator.Core.Services;
 using ImageGenerator.Core.Utils;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using Path = System.IO.Path;
 
 namespace ImageGenerator.UI.Desktop
@@ -31,6 +32,7 @@ namespace ImageGenerator.UI.Desktop
         public MainWindow()
         {
             InitializeComponent();
+            this.TextBoxCustomFormat.Text=string.Concat(Directory.GetCurrentDirectory(),"\\ImageOutputPropertiesSample.txt");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,7 +40,6 @@ namespace ImageGenerator.UI.Desktop
             var openFileDialog = new OpenFileDialog
             {
                 Multiselect = true,
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
             };
             if (openFileDialog.ShowDialog() == true)
             {
@@ -56,7 +57,8 @@ namespace ImageGenerator.UI.Desktop
                 {
                     imageOrchestrator.Generate(imageProperties);
                 }
-                Process.Start(this.TextBoxOutput.Text);
+                if(!this.CheckBoxCustomFormat.IsChecked.GetValueOrDefault())
+                    Process.Start(this.TextBoxOutput.Text);
                 this.ListBoxFiles.Items.Clear();
             }
             catch (Exception ex)
@@ -88,14 +90,22 @@ namespace ImageGenerator.UI.Desktop
                 {
                     FileName = Path.GetFileNameWithoutExtension(path),
                     Image = File.ReadAllBytes(path),
-                    ImageOutputProperties = ImageOutputPropertiesFactory.CreateForXamarin(
-                                    Path.GetExtension(path), this.TextBoxOutput.Text)
-
+                    ImageOutputProperties = this.CheckBoxCustomFormat.IsChecked.GetValueOrDefault()?
+                                            ImageOutputPropertiesFactory.CreateListFromJson(File.ReadAllText(this.TextBoxCustomFormat.Text)):
+                                            ImageOutputPropertiesFactory.CreateForXamarin(Path.GetExtension(path), this.TextBoxOutput.Text)
                 });
             }
+
             return imagesProperties;
         }
 
-       
+        private void CheckBoxCustomFormat_Checked(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                this.TextBoxCustomFormat.Text = openFileDialog.FileName;
+            }
+        }
     }
 }

@@ -16,6 +16,10 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -56,9 +60,24 @@
             Grid.ColumnSpan="4"
             Grid.Row="6"/>
         
+        <CheckBox
+            x:Name="CheckBoxCustomFormat"
+            Content="Formato de salida personalizado"
+            Grid.Row="8"
+            Grid.Column="0" Checked="CheckBoxCustomFormat_Checked"/>
+        <TextBox
+            x:Name="TextBoxCustomFormat"
+            Grid.Column="0"
+            Grid.Row="10"
+            Grid.ColumnSpan="4"
+            IsEnabled="{Binding ElementName=CheckBoxCustomFormat,Path=IsChecked}"/>
+
+
+
         <Button
             Grid.Column="5"
             Grid.Row="6"
+            Grid.RowSpan="3"
             Height="50"
             VerticalAlignment="Bottom"
             Content="Generar" 
