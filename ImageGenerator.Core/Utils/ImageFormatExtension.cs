@@ -16,9 +16,9 @@ namespace ImageGenerator.Core.Utils
             var imageCodecInfo = ImageCodecInfo.GetImageEncoders().FirstOrDefault(x => x.FormatID == imageFormat?.Guid);
             if (imageCodecInfo != null)
             {
-                extension=Path.GetExtension(imageCodecInfo.FilenameExtension);
+                extension = Path.GetExtension(imageCodecInfo.FilenameExtension);
             }
-            return extension;
+            return extension?.ToLower();
         }
 
         public static ImageFormat GetImageFormat(string extension)
