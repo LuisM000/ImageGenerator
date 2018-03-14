@@ -35,7 +35,7 @@ namespace ImageGenerator.Core.Test
         {
             Action resizeAction = () => imageService.Resize(null, new Size(20,40));
 
-            Assert.Throws<ArgumentNullException>(resizeAction);
+            Assert.Throws<NullReferenceException>(resizeAction);
         }
 
         [Fact]
