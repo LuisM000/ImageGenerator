@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
@@ -27,7 +28,7 @@ namespace ImageGenerator.UI.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult GenerateImages(IList<HttpPostedFileBase> files)
+        public ActionResult GenerateImages(IList<HttpPostedFileBase> files, string json)
         {
             var rootPath = Server.MapPath(string.Concat("~/App_Data/", Guid.NewGuid().ToString()));
             var zipFilePath = string.Concat(rootPath, ".zip");
@@ -35,7 +36,10 @@ namespace ImageGenerator.UI.Web.Controllers
             {
                 foreach (var file in files)
                 {
-                    var imageOutputProperties = ImageOutputPropertiesFactory.CreateForXamarin(Path.GetExtension(file.FileName), rootPath);
+                    var imageOutputProperties = string.IsNullOrEmpty(json)
+                        ? ImageOutputPropertiesFactory.CreateForXamarin(Path.GetExtension(file.FileName), rootPath)
+                        : this.CreateFromJson(json, Path.GetExtension(file.FileName), rootPath);
+
                     ImageProperties imageProperties = new ImageProperties()
                     {
                         FileName = Path.GetFileNameWithoutExtension(file.FileName),
@@ -59,8 +63,22 @@ namespace ImageGenerator.UI.Web.Controllers
                 if(Directory.Exists(rootPath))
                     Directory.Delete(rootPath, true);
             }
+        }
 
 
+
+        private IList<ImageOutputProperties> CreateFromJson(string json, string extension, string rootPath)
+        {
+            var imagesOutputProperties = ImageOutputPropertiesFactory.CreateListFromJson(json);
+            ImageFormat imageFormat = ImageFormatExtension.GetImageFormat(extension) ?? ImageFormat.Png;
+            foreach (var imageOutputProperties in imagesOutputProperties)
+            {
+                imageOutputProperties.FolderPath.IsAbsolute = true;
+                imageOutputProperties.FolderPath.Path =  string.Concat(rootPath, "\\", imageOutputProperties.FolderPath.Path);
+                imageOutputProperties.ImageFormat = imageFormat;
+            }
+
+            return imagesOutputProperties;
         }
     }
 }
