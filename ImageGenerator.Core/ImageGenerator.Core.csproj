@@ -61,6 +61,7 @@
     <Compile Include="Exceptions\FileAlreadyExistsException.cs" />
     <Compile Include="Model\Images\FolderPath.cs" />
     <Compile Include="Model\Images\ImageDimensions.cs" />
+    <Compile Include="Model\Images\ImageFormat.cs" />
     <Compile Include="Model\Images\ImageOutputProperties.cs" />
     <Compile Include="Model\Images\ImageName.cs" />
     <Compile Include="Model\Images\ImageProperties.cs" />

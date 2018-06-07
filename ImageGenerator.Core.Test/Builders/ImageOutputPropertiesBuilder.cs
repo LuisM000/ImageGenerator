@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
@@ -19,7 +18,7 @@ namespace ImageGenerator.Core.Test.Builders
             imageOutputProperties = new ImageOutputProperties()
             {
                 ImageDimensions = new ImageDimensions() { Resolution = new Size(1, 1) },
-                ImageFormat = ImageFormat.Png
+                ImageFormat = System.Drawing.Imaging.ImageFormat.Png
             };
         }
 

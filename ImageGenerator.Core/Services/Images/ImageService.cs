@@ -36,7 +36,8 @@ namespace ImageGenerator.Core.Services
 
         public void SaveImage(Image image, OutputDescriptor outputDescriptor)
         {
-            var outputFormat = outputDescriptor.ImageFormat ?? ImageFormat.Png;
+            var outputFormat = outputDescriptor.ImageFormat ??
+                               System.Drawing.Imaging.ImageFormat.Png;
             string pathWithExtension = string.Concat(outputDescriptor.Path, outputFormat.GetExtension());
             if (!outputDescriptor.OverwriteFile && File.Exists(pathWithExtension))
                 throw new FileAlreadyExistsException(pathWithExtension);
