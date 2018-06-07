@@ -7,6 +7,7 @@ using System.Reflection;
 using ImageGenerator.Core.Model;
 using ImageGenerator.Core.Utils;
 using Xunit;
+using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
 namespace ImageGenerator.Core.Test
 {
@@ -15,11 +16,11 @@ namespace ImageGenerator.Core.Test
         [Fact]
         public void CreateImageFormat_FromJson()
         {
-            string imageFormatJson = "{\"ImageFormat\":\"Png\"}";
+            string imageFormatJson = "{\"ImageFormat\":{\"Format\":\"Png\"}}";
 
             var imageOutputProperties = ImageOutputPropertiesFactory.CreateFromJson(imageFormatJson);
 
-            Assert.Equal(ImageFormat.Png, imageOutputProperties.ImageFormat);
+            Assert.Equal(ImageFormat.Png, imageOutputProperties.ImageFormat.Format);
         }
     }
 }

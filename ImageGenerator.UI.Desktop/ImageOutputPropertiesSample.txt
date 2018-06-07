@@ -4,7 +4,7 @@
       "Path": "\\iOS",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png"},
     "ImageName": {
       "Prefix": null,
       "Suffix": "@3x"
@@ -20,7 +20,7 @@
       "Path": "\\iOS",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": {
       "Prefix": null,
       "Suffix": "@2x"
@@ -36,7 +36,7 @@
       "Path": "\\iOS",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": null,
     "ImageDimensions": {
       "Resolution": "0, 0",
@@ -49,7 +49,7 @@
       "Path": "\\Android\\xxxhdpi",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": null,
     "ImageDimensions": {
       "Resolution": "0, 0",
@@ -62,7 +62,7 @@
       "Path": "\\Android\\xxhdpi",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": null,
     "ImageDimensions": {
       "Resolution": "0, 0",
@@ -75,7 +75,7 @@
       "Path": "\\Android\\xhdpi",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": null,
     "ImageDimensions": {
       "Resolution": "0, 0",
@@ -88,7 +88,7 @@
       "Path": "\\Android\\hdpi",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": null,
     "ImageDimensions": {
       "Resolution": "0, 0",
@@ -101,7 +101,7 @@
       "Path": "\\Android\\mdpi",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": null,
     "ImageDimensions": {
       "Resolution": "0, 0",
@@ -114,7 +114,7 @@
       "Path": "\\Android\\ldpi",
       "IsAbsolute": false
     },
-    "ImageFormat": "Png",
+    "ImageFormat": { "Format":"Png" },
     "ImageName": null,
     "ImageDimensions": {
       "Resolution": "0, 0",

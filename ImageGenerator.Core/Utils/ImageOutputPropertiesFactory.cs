@@ -12,8 +12,7 @@ namespace ImageGenerator.Core.Utils
     {
         public static IList<ImageOutputProperties> CreateForXamarin(string fileExtension, string rootPath)
         {
-            ImageFormat imageFormat = ImageFormatExtension.GetImageFormat(fileExtension) ??
-                                      System.Drawing.Imaging.ImageFormat.Png;
+            ImageFormat imageFormat = new ImageFormat(fileExtension);
             return new List<ImageOutputProperties>()
             {
                 new ImageOutputProperties()

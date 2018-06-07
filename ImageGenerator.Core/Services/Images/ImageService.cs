@@ -41,7 +41,7 @@ namespace ImageGenerator.Core.Services
             string pathWithExtension = string.Concat(outputDescriptor.Path, outputFormat.GetExtension());
             if (!outputDescriptor.OverwriteFile && File.Exists(pathWithExtension))
                 throw new FileAlreadyExistsException(pathWithExtension);
-            image.Save(pathWithExtension, outputFormat);
+            image.Save(pathWithExtension, outputFormat.Format);
         }
         
     }

@@ -7,6 +7,7 @@ using ImageGenerator.Core.Model;
 using ImageGenerator.Core.Services;
 using ImageGenerator.Core.Test.Builders;
 using Xunit;
+using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
 namespace ImageGenerator.Core.Test
 {

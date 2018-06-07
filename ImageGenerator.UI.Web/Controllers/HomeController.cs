@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
@@ -70,12 +69,13 @@ namespace ImageGenerator.UI.Web.Controllers
         private IList<ImageOutputProperties> CreateFromJson(string json, string extension, string rootPath)
         {
             var imagesOutputProperties = ImageOutputPropertiesFactory.CreateListFromJson(json);
-            ImageFormat imageFormat = ImageFormatExtension.GetImageFormat(extension) ?? ImageFormat.Png;
+            ImageFormat imageFormat = new ImageFormat(extension);
             foreach (var imageOutputProperties in imagesOutputProperties)
             {
                 imageOutputProperties.FolderPath.IsAbsolute = true;
                 imageOutputProperties.FolderPath.Path =  string.Concat(rootPath, "\\", imageOutputProperties.FolderPath.Path);
                 imageOutputProperties.ImageFormat = imageFormat;
+
             }
 
             return imagesOutputProperties;
