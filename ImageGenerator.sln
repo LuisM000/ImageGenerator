@@ -1,0 +1,46 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGenerator", "ImageGenerator\ImageGenerator.csproj", "{CD0622AD-CB60-4C6C-90AA-14CAD5F8486F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGenerator.Test", "ImageGenerator.Test\ImageGenerator.Test.csproj", "{D2CBF7C5-B291-4E09-B388-AA1BD0AE5FCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGenerator.Contracts", "ImageGenerator.Contracts\ImageGenerator.Contracts.csproj", "{3B4FDA89-3B15-43B9-A414-E274FD51349A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGenerator.Services", "ImageGenerator.Services\ImageGenerator.Services.csproj", "{DC5D2590-D389-4D4F-99E3-F549B6394856}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{AF280140-D8CD-419A-AEB4-5D89C6EA9F6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGenerator.Console", "ImageGenerator.Console\ImageGenerator.Console.csproj", "{7EB57336-A53B-4812-BF42-0499AC54846C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD0622AD-CB60-4C6C-90AA-14CAD5F8486F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD0622AD-CB60-4C6C-90AA-14CAD5F8486F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD0622AD-CB60-4C6C-90AA-14CAD5F8486F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD0622AD-CB60-4C6C-90AA-14CAD5F8486F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2CBF7C5-B291-4E09-B388-AA1BD0AE5FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2CBF7C5-B291-4E09-B388-AA1BD0AE5FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2CBF7C5-B291-4E09-B388-AA1BD0AE5FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2CBF7C5-B291-4E09-B388-AA1BD0AE5FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B4FDA89-3B15-43B9-A414-E274FD51349A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4FDA89-3B15-43B9-A414-E274FD51349A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B4FDA89-3B15-43B9-A414-E274FD51349A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B4FDA89-3B15-43B9-A414-E274FD51349A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5D2590-D389-4D4F-99E3-F549B6394856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5D2590-D389-4D4F-99E3-F549B6394856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5D2590-D389-4D4F-99E3-F549B6394856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5D2590-D389-4D4F-99E3-F549B6394856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB57336-A53B-4812-BF42-0499AC54846C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB57336-A53B-4812-BF42-0499AC54846C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB57336-A53B-4812-BF42-0499AC54846C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB57336-A53B-4812-BF42-0499AC54846C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7EB57336-A53B-4812-BF42-0499AC54846C} = {AF280140-D8CD-419A-AEB4-5D89C6EA9F6E}
+	EndGlobalSection
+EndGlobal
