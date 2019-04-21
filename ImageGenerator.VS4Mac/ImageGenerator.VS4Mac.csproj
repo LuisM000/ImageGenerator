@@ -9,7 +9,6 @@
           <type>AfterBuild</type>
           <command>"/Applications/Visual Studio.app/Contents/MacOS/vstool" setup pack ${TargetDir}/ImageGenerator.VS4Mac.dll</command>
           <workingdir>${TargetDir}</workingdir>
-          <externalConsole>True</externalConsole>
         </Command>
       </CustomCommands>
     </CustomCommands>
