@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Addin
+    id = "MonoDevelop.ImageGenerator">
+    <Header>
+        <Name></Name>
+        <Description></Description>
+        <Author>Luis Marcos Rivera</Author>
+        <Copyright>Luis Marcos Rivera</Copyright>
+        <Url></Url>
+    </Header>
+     <Extension 
+        path = "/MonoDevelop/Ide/Commands/Tools">
+        <Command 
+            id = "ImageGenerator.VS4Mac.Commands.OpenGenerator"
+            _label = "Open Image Generator"
+            defaultHandler = "ImageGenerator.VS4Mac.Commands.OpenGeneratorCommand" />
+    </Extension>
+     <Extension 
+        path = "/MonoDevelop/Ide/MainMenu/Tools">
+        <CommandItem 
+            id="ImageGenerator.VS4Mac.Commands.OpenGenerator" />
+    </Extension>
+</Addin>

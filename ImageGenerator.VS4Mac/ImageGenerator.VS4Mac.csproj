@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>"/Applications/Visual Studio.app/Contents/MacOS/vstool" setup pack ${TargetDir}/ImageGenerator.VS4Mac.dll</command>
+          <workingdir>${TargetDir}</workingdir>
+          <externalConsole>True</externalConsole>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoDevelop.Addins" Version="0.4.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageGenerator\ImageGenerator.csproj" />
+    <ProjectReference Include="..\ImageGenerator.Contracts\ImageGenerator.Contracts.csproj" />
+    <ProjectReference Include="..\ImageGenerator.Services\ImageGenerator.Services.csproj" />
+  </ItemGroup>
+</Project>

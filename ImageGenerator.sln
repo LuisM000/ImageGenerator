@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{AF28
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGenerator.Console", "ImageGenerator.Console\ImageGenerator.Console.csproj", "{7EB57336-A53B-4812-BF42-0499AC54846C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGenerator.VS4Mac", "ImageGenerator.VS4Mac\ImageGenerator.VS4Mac.csproj", "{AEC7EF1A-9C14-4A99-96B8-2620E9C3B6DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +41,13 @@ Global
 		{7EB57336-A53B-4812-BF42-0499AC54846C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EB57336-A53B-4812-BF42-0499AC54846C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EB57336-A53B-4812-BF42-0499AC54846C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC7EF1A-9C14-4A99-96B8-2620E9C3B6DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC7EF1A-9C14-4A99-96B8-2620E9C3B6DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC7EF1A-9C14-4A99-96B8-2620E9C3B6DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC7EF1A-9C14-4A99-96B8-2620E9C3B6DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7EB57336-A53B-4812-BF42-0499AC54846C} = {AF280140-D8CD-419A-AEB4-5D89C6EA9F6E}
+		{AEC7EF1A-9C14-4A99-96B8-2620E9C3B6DA} = {AF280140-D8CD-419A-AEB4-5D89C6EA9F6E}
 	EndGlobalSection
 EndGlobal
