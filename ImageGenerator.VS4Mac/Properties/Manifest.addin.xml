@@ -12,12 +12,18 @@
         path = "/MonoDevelop/Ide/Commands/Tools">
         <Command 
             id = "ImageGenerator.VS4Mac.Commands.OpenGenerator"
-            _label = "Open Image Generator"
+            _label = "Image generator"
             defaultHandler = "ImageGenerator.VS4Mac.Commands.OpenGeneratorCommand" />
+         <Command 
+            id = "ImageGenerator.VS4Mac.Commands.OpenImageAssetsGenerator"
+            _label = "Image assets generator"
+            defaultHandler = "ImageGenerator.VS4Mac.Commands.OpenImageAssetsGeneratorCommand" />
     </Extension>
      <Extension 
         path = "/MonoDevelop/Ide/MainMenu/Tools">
         <CommandItem 
             id="ImageGenerator.VS4Mac.Commands.OpenGenerator" />
+         <CommandItem 
+            id="ImageGenerator.VS4Mac.Commands.OpenImageAssetsGenerator" />
     </Extension>
 </Addin>

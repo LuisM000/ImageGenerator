@@ -8,9 +8,9 @@ namespace ImageGenerator.VS4Mac.Commands
     {
         protected override void Run()
         {
-            using (var generateTextDialog = new ImageGeneratorDialog())
+            using (var imageGeneratorDialog = new ImageGeneratorDialog())
             {
-                generateTextDialog.Run(Xwt.MessageDialog.RootWindow);
+                imageGeneratorDialog.Run(Xwt.MessageDialog.RootWindow);
             }
         }
 
