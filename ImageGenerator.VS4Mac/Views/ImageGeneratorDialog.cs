@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ImageGenerator.Contracts;
 using ImageGenerator.Services;
-using ImageGenerator.Services.Utils;
-using MonoDevelop.Core;
+using ImageGenerator.VS4Mac.Utils;
 using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui;
 using Xwt;
+using ImageOutputPropertiesFactory = ImageGenerator.VS4Mac.Utils.ImageOutputPropertiesFactory;
 
 namespace ImageGenerator.VS4Mac.Views
 {
@@ -16,14 +17,24 @@ namespace ImageGenerator.VS4Mac.Views
         readonly IImageOrchestrator imageOrchestrator = new ImageOrchestrator(new Services.FolderGenerator(), new Services.ImageService());
 
         VBox _mainBox;
+
+        VBox _baseSizeBox;
+        Label _baseSizeLabel;
+        HBox _radioButtonsBox;
+        RadioButtonGroup _radioButtonsGroup;
+        RadioButton _4xRadioButton;
+        RadioButton _3xRadioButton;
+
         Label _imagesLabel;
         HBox _imagesBox;
         Button _imagesSelectorButton;        
         ListBox _imagesListBox;
+
         Label _outputFolderLabel;
         HBox _outputFolderBox;
         Button _outputFolderButton;
         TextEntry _outputFolderEntry;
+
         HBox _buttonBox;
         Button _generateButton;
 
@@ -46,11 +57,25 @@ namespace ImageGenerator.VS4Mac.Views
 
             _mainBox = new VBox
             {
-                HeightRequest = 270,
+                HeightRequest = 340,
                 WidthRequest = 500
             };
 
-            _imagesLabel = new Label("Select images:");
+            _baseSizeBox = new VBox();
+            _baseSizeLabel = new Label("Select your design base size");
+            _radioButtonsBox = new HBox();
+            _radioButtonsGroup = new RadioButtonGroup();
+            _4xRadioButton = new RadioButton("4x")
+            {
+                Group = _radioButtonsGroup
+            };
+            _3xRadioButton = new RadioButton("3x")
+            {
+                Group = _radioButtonsGroup
+            };
+
+
+            _imagesLabel = new Label("Select the largest image files to generate different sizes for all platforms");
             _imagesBox = new HBox();
             _imagesListBox = new ListBox
             {
@@ -78,19 +103,25 @@ namespace ImageGenerator.VS4Mac.Views
             {
                 BackgroundColor = Styles.BaseSelectionBackgroundColor,
                 LabelColor = Styles.BaseSelectionTextColor,
-                WidthRequest = 100
+                WidthRequest = 100,
+                HeightRequest = 40
             };
 
-            fileDialog = new OpenFileDialog("Select images");
-            fileDialog.Multiselect = true;
+            fileDialog = new OpenFileDialog("Select images")
+            {
+                Multiselect = true
+            };
 
             folderDialog = new SelectFolderDialog("Select output folder");
         }
 
         void BuildGui()
         {
-            
-            _buttonBox.PackEnd(_generateButton);
+            _baseSizeBox.PackStart(_baseSizeLabel);
+            _baseSizeBox.PackEnd(_radioButtonsBox);
+            _radioButtonsBox.PackStart(_3xRadioButton);
+            _radioButtonsBox.PackStart(_4xRadioButton);
+            _mainBox.PackStart(_baseSizeBox, marginBottom: 5);
 
             _mainBox.PackStart(_imagesLabel);
             _imagesBox.PackStart(_imagesListBox, marginTop: 5);
@@ -101,6 +132,8 @@ namespace ImageGenerator.VS4Mac.Views
             _outputFolderBox.PackEnd(_outputFolderButton);
             _mainBox.PackStart(_outputFolderBox);
             _mainBox.PackEnd(_buttonBox);
+
+            _buttonBox.PackEnd(_generateButton);
 
 
             Content = _mainBox;
@@ -138,9 +171,7 @@ namespace ImageGenerator.VS4Mac.Views
 
         void Loading(bool isLoading)
         {
-            _generateButton.Sensitive = !isLoading;
-            _imagesSelectorButton.Sensitive = !isLoading;
-            _outputFolderButton.Sensitive = !isLoading;
+            _mainBox.Sensitive = !isLoading;
         }
 
 
@@ -151,15 +182,15 @@ namespace ImageGenerator.VS4Mac.Views
 
             bool success = true;
             string outputFolder = _outputFolderEntry.Text;
-            
+
             foreach (var path in fileDialog.FileNames)
             {
                 try
                 {
+                    var outputProperties = _3xRadioButton.Active ?
+                                            ImageOutputPropertiesFactory.CreateForXamarin3x(Path.GetExtension(path), outputFolder) :
+                                            ImageOutputPropertiesFactory.CreateForXamarin4x(Path.GetExtension(path), outputFolder);
 
-                    progressMonitor.Log.WriteLine($"Generating {Path.GetFileName(path)}...");
-
-                    var outputProperties = ImageOutputPropertiesFactory.CreateForXamarin(Path.GetExtension(path), outputFolder);
 
                     var file = File.ReadAllBytes(path);
 
@@ -172,12 +203,9 @@ namespace ImageGenerator.VS4Mac.Views
 
                     imageOrchestrator.Generate(imageProperties);
 
-
-                    progressMonitor.Log.WriteLine($"Generation complete. {Path.GetFileName(path)}");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    progressMonitor.Log.WriteLine($"An error occurred generating {Path.GetFileName(path)}: {ex.Message}");
                     success = false;
                 }
             }                    
@@ -185,14 +213,11 @@ namespace ImageGenerator.VS4Mac.Views
             progressMonitor.EndTask();
             Loading(false);
 
-            if (success)
+            if(success)
             {
-                progressMonitor.ReportSuccess("Images generation successfully.");
+                FinderUtils.Reveal(Path.Combine(outputFolder, "Images"));
             }
-            else
-            {
-                progressMonitor.ReportWarning("Generation completed with errors :(");
-            }
+
         }     
 
     }

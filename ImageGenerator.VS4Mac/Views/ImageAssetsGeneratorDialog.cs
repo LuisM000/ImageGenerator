@@ -224,8 +224,7 @@ namespace ImageGenerator.VS4Mac.Views
         }
         void Loading(bool isLoading)
         {
-            _generateButton.Sensitive = !isLoading;
-            _imagesSelectorButton.Sensitive = !isLoading;
+            _mainBox.Sensitive = !isLoading;
         }
         
 
